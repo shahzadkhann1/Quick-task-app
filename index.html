@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QuickTask helps you organize your daily tasks and stay productive.">
+    <title>QuickTask | Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <a href="#" class="brand">
+                <span class="brand-icon">✓</span>
+                <span>QuickTask</span>
+            </a>
+
+            <p class="nav-heading">WORKSPACE</p>
+
+            <nav class="navigation">
+                <button class="nav-item active" data-filter="all">
+                    <span>▦</span> All Tasks
+                    <span class="nav-count" id="allCount">0</span>
+                </button>
+                <button class="nav-item" data-filter="active">
+                    <span>◷</span> In Progress
+                </button>
+                <button class="nav-item" data-filter="completed">
+                    <span>✓</span> Completed
+                </button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="profile-avatar">SK</div>
+                <div class="profile-info">
+                    <strong>My Workspace</strong>
+                    <span>Personal account</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">YOUR PERSONAL WORKSPACE</p>
+                    <h1>My Tasks <span class="wave">✦</span></h1>
+                    <p class="subtitle" id="todayDate">Make today count.</p>
+                </div>
+                <div class="date-badge">
+                    <span class="date-dot"></span>
+                    Stay productive
+                </div>
+            </header>
+
+            <section class="welcome-card">
+                <div class="welcome-content">
+                    <span class="welcome-label">YOUR DAILY PLAN</span>
+                    <h2>Small steps.<br>Big achievements.</h2>
+                    <p>Focus on what matters. One task at a time.</p>
+                </div>
+                <div class="welcome-art" aria-hidden="true">
+                    <div class="art-circle circle-one"></div>
+                    <div class="art-circle circle-two"></div>
+                    <div class="art-check">✓</div>
+                    <div class="art-star star-one">✦</div>
+                    <div class="art-star star-two">✧</div>
+                </div>
+            </section>
+
+            <section class="stats-grid" aria-label="Task statistics">
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Total Tasks</span>
+                        <span class="stat-icon purple">▦</span>
+                    </div>
+                    <strong class="stat-number" id="totalTasks">0</strong>
+                    <span class="stat-note">Tasks in your list</span>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">In Progress</span>
+                        <span class="stat-icon orange">◷</span>
+                    </div>
+                    <strong class="stat-number" id="activeTasks">0</strong>
+                    <span class="stat-note">Still to be done</span>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Completed</span>
+                        <span class="stat-icon green">✓</span>
+                    </div>
+                    <strong class="stat-number" id="completedTasks">0</strong>
+                    <span class="stat-note">Tasks you've finished</span>
+                </article>
+            </section>
+
+            <section class="progress-card">
+                <div class="progress-info">
+                    <div>
+                        <h3>Daily progress</h3>
+                        <p>Keep going, you're doing great!</p>
+                    </div>
+                    <strong id="progressText">0%</strong>
+                </div>
+                <div
+                    class="progress-track"
+                    role="progressbar"
+                    aria-label="Task completion progress"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                    id="progressBar"
+                >
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </section>
+
+            <section class="tasks-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Your task list</h2>
+                        <p>Plan your work and get things done.</p>
+                    </div>
+                    <span class="task-total" id="visibleCount">0 tasks</span>
+                </div>
+
+                <form class="task-form" id="taskForm">
+                    <label class="sr-only" for="taskInput">New task</label>
+                    <span class="input-plus" aria-hidden="true">+</span>
+                    <input
+                        type="text"
+                        id="taskInput"
+                        placeholder="What needs to be done?"
+                        maxlength="150"
+                        autocomplete="off"
+                        required
+                    >
+                    <button type="submit" class="add-button">+ Add Task</button>
+                </form>
+
+                <div class="task-list" id="taskList" aria-live="polite"></div>
+
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">✓</div>
+                    <h3 id="emptyTitle">Your workspace is clear!</h3>
+                    <p id="emptyMessage">Add your first task above and start making progress.</p>
+                </div>
+
+                <div class="list-footer">
+                    <span id="footerText">Ready when you are.</span>
+                    <button type="button" id="clearCompleted" class="clear-button">
+                        Clear completed
+                    </button>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <span>Made for better days.</span>
+                <span>QuickTask © <span id="year"></span></span>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
